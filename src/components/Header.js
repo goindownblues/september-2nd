@@ -6,6 +6,7 @@ import HomeIcon from '@material-ui/icons/Home';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import { makeStyles } from '@material-ui/core/styles';
 import { Box, Switch } from '@material-ui/core';
+import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
     menuButton: {
@@ -18,6 +19,9 @@ const useStyles = makeStyles((theme) => ({
         display: 'flex',
         justifyContent: 'space-between'
     },
+    link: {
+        color: theme.palette.text.color
+    }
 }));
 
 
@@ -27,10 +31,11 @@ export default function Header({ dark, handleChange }) {
     return (
         <AppBar position="static">
             <Toolbar className={classes.toolbar}>
-                <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
-                    <HomeIcon />
-                </IconButton>
-
+                <Link to="/" component={IconButton}>
+                    <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
+                        <HomeIcon />
+                    </IconButton>
+                </Link>
 
                 <Box display="flex" alignItems="center">
                     <Switch

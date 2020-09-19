@@ -1,5 +1,6 @@
 import React from 'react';
 import { Grid, makeStyles } from '@material-ui/core';
+import { Link } from 'react-router-dom';
 
 import ProductThumbnail from '../components/ProductThumbnail';
 
@@ -34,10 +35,16 @@ export default function ProductList() {
             <Grid container spacing={2}>
                 {products.map((props, i) => (
                     <Grid key={i} item xs={12} lg={4}>
-                        <ProductThumbnail {...props} />
+                        <Link
+                            to={{
+                                pathname: "/product",
+                                state: props
+                            }}>
+                            <ProductThumbnail  {...props} />
+                        </Link>
                     </Grid>
                 ))}
             </Grid>
-        </div>
+        </div >
     )
 }
