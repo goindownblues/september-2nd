@@ -1,17 +1,15 @@
 import React, { useState } from 'react';
 import { createMuiTheme, makeStyles, ThemeProvider } from '@material-ui/core/styles';
-
-import { Typography, Paper, Switch } from '@material-ui/core';
-
+import { Container } from '@material-ui/core';
 import deepOrange from '@material-ui/core/colors/deepOrange';
 import orange from '@material-ui/core/colors/orange';
-
+import ProductList from '../src/pages/ProductList';
 import Header from '../src/components/Header';
-import HeaderSecond from '../src/components/Header2';
+import Layout from './Layout';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    flexGrow: 1,
+    background: theme.palette.background
   },
   title: {
     flexGrow: 1,
@@ -45,17 +43,14 @@ function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <Header dark={dark} handleChange={handleChange}></Header>
-      <HeaderSecond>
-        <Switch
-          checked={dark}
-          onChange={handleChange}
-        />
-      </HeaderSecond>
-
-      <Paper className={classes.paper}>
-        <Typography>Content</Typography>
-      </Paper>
+      <div className={classes.root}>
+        <Header dark={dark} handleChange={handleChange}></Header>
+        <Layout>
+          <Container maxWidth="md">
+            <ProductList />
+          </Container>
+        </Layout>
+      </div>
     </ThemeProvider>
   );
 }
